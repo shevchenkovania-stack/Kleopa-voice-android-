@@ -1,0 +1,25 @@
+{
+  "canvas": { "width": 355, "height": 330 },
+  "parts": {
+    "body": { "file": "klepa_parts/body_shoulders.png", "x": 86.4, "y": 238, "width": 159.3, "height": 73 },
+    "hair_back": { "file": "klepa_parts/hair_variant_1.png", "x": 27.9, "y": 7.4, "width": 296.4, "height": 272.3 },
+    "face_base": { "file": "klepa_parts/head_base.png", "x": 77.8, "y": 90.9, "width": 181.4, "height": 181.9 },
+    "left_eye": { "file": "klepa_parts/eye_left_full_1.png", "x": 82.4, "y": 146.8, "width": 89.6, "height": 62.2 },
+    "left_eye_closed": { "file": "klepa_parts/eye_or_mouth_line_1.png", "x": 100, "y": 146.8, "width": 61.8, "height": 59.6 },
+    "right_eye": { "file": "klepa_parts/eye_left_full_2.png", "x": 166.1, "y": 147, "width": 85.7, "height": 64 },
+    "right_eye_closed": { "file": "klepa_parts/eye_or_mouth_line_2.png", "x": 179.8, "y": 151.8, "width": 63.3, "height": 52 },
+    "left_brow": { "file": "klepa_parts/brow_left_style1.png", "x": 93.2, "y": 102.4, "width": 66, "height": 91.6 },
+    "right_brow": { "file": "klepa_parts/brow_right_style1.png", "x": 175.5, "y": 102.8, "width": 62.8, "height": 90.2 },
+    "nose": { "file": "klepa_parts/nose_variant_1.png", "x": 104.8, "y": 159.5, "width": 127.5, "height": 95.7 },
+    "mouth_variants": [
+      { "id": "mouth_neutral", "file": "klepa_parts/mouth_smile_5.png", "x": 97.1, "y": 193.8, "width": 166.9, "height": 63.8 },
+      { "id": "mouth_smile", "file": "klepa_parts/mouth_smile_1.png", "x": 117.6, "y": 192.8, "width": 103.8, "height": 70.1 },
+      { "id": "mouth_open", "file": "klepa_parts/mouth_open_1.png", "x": 108, "y": 200.5, "width": 129.7, "height": 62.8 }
+    ],
+    "hair_variants": [
+      { "id": "hair_front", "file": "klepa_parts/hair_variant_6.png", "x": 50.1, "y": 12, "width": 239.9, "height": 199.5, "layer": "front" },
+      { "id": "hair_side_left", "file": "klepa_parts/hair_variant_4.png", "x": 18.2, "y": 123.6, "width": 134.4, "height": 157.2, "layer": "back" },
+      { "id": "hair_side_right", "file": "klepa_parts/hair_variant_5.png", "x": 192, "y": 133, "width": 132, "height": 144.1, "layer": "back" }
+    ]
+  }
+}
