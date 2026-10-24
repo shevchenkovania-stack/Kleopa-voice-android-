@@ -206,11 +206,11 @@ class _KlyopaPainter extends CustomPainter {
       browValue = 0.5;
     }
     
-    // Ear wiggle when talking - different phases for interesting movement
+    // Ear wiggle when talking - smooth up/down, each ear on its own rhythm
     if (state == KlyopaState.talking) {
-      final time = DateTime.now().millisecondsSinceEpoch;
-      leftEarWiggle = ((time % 400) / 400.0 * 2 - 1) * 4; // oscillate -4 to 4
-      rightEarWiggle = (((time + 200) % 600) / 600.0 * 2 - 1) * 3; // different rhythm
+      final t = DateTime.now().millisecondsSinceEpoch / 1000.0;
+      leftEarWiggle = math.sin(t * 6.0) * 5.0;          // ~1 Hz, ±5 px
+      rightEarWiggle = math.sin(t * 4.5 + 1.7) * 4.0;   // slower, off-phase
     }
 
     // 0. Neck / shoulders, then the hair volume that sits behind the head
