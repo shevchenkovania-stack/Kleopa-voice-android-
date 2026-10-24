@@ -350,6 +350,26 @@ class _KlyopaPainter extends CustomPainter {
     canvas.restore();
   }
 
+  /// Viseme pattern for talking - different real mouth shapes from the config,
+  /// cycled with a coprime stride so the order never looks like a loop.
+  static const _visemes = [
+    'mouth_open',    // wide "а"
+    'mouth_wide',    // broad half-open "э"
+    'mouth_smirk',   // pulled "ы"
+    'mouth_open2',   // narrow "о"
+    'mouth_closed',  // lips together "м/п" pause
+    'mouth_small',   // small "и"
+    'mouth_smile',   // bright "е"
+    'mouth_open',
+  ];
+
+  Map<String, dynamic>? _mouthById(List<dynamic> variants, String id) {
+    for (var v in variants) {
+      if ((v as Map<String, dynamic>)['id'] == id) return v;
+    }
+    return null;
+  }
+
   void _drawMouth(Canvas canvas, Map<String, dynamic> parts) {
     final variants = parts['mouth_variants'] as List<dynamic>?;
     if (variants == null || variants.isEmpty) return;
@@ -357,37 +377,27 @@ class _KlyopaPainter extends CustomPainter {
     // State -> mouth variant id from the config
     String targetId;
     if (state == KlyopaState.talking) {
-      targetId = 'mouth_open';
+      // switch to the next viseme every ~130 ms, stride 3 = non-sequential order
+      final step = (DateTime.now().millisecondsSinceEpoch ~/ 130) % _visemes.length;
+      targetId = _visemes[(step * 3) % _visemes.length];
     } else if (state == KlyopaState.happy) {
-      targetId = 'mouth_smile';
+      targetId = 'mouth_laugh';
     } else {
       targetId = 'mouth_neutral';
     }
 
-    Map<String, dynamic>? target;
-    for (var v in variants) {
-      if ((v as Map<String, dynamic>)['id'] == targetId) {
-        target = v;
-        break;
-      }
+    var target = _mouthById(variants, targetId);
+    if (target == null && targetId == 'mouth_laugh') {
+      target = _mouthById(variants, 'mouth_smile');
     }
-    if (target == null) {
-      // Config has no variant for this state - fall back to the neutral one
-      for (var v in variants) {
-        if ((v as Map<String, dynamic>)['id'] == 'mouth_neutral') {
-          target = v;
-          break;
-        }
-      }
-      if (target == null) return;
-    }
+    target ??= _mouthById(variants, 'mouth_neutral');
+    if (target == null) return;
 
-    // Animate mouth during talking - scale Y to simulate opening/closing
+    // Subtle breathing wobble on top of the shape switch while talking
     if (state == KlyopaState.talking) {
       final time = DateTime.now().millisecondsSinceEpoch;
-      final mouthAnim = ((time % 300) / 300.0 * 2 - 1); // oscillate -1 to 1
-      final scaleY = 0.6 + (mouthAnim.abs() * 0.4); // scale between 0.6 and 1.0
-      _drawPart(canvas, target, scaleY: scaleY);
+      final wobble = 0.92 + ((time % 130) / 130.0) * 0.08; // 0.92..1.0
+      _drawPart(canvas, target, scaleY: wobble);
     } else {
       _drawPart(canvas, target);
     }

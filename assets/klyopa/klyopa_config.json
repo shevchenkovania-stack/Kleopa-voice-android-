@@ -14,7 +14,13 @@
     "mouth_variants": [
       { "id": "mouth_neutral", "file": "klepa_parts/mouth_smile_5.png", "x": 97.1, "y": 193.8, "width": 166.9, "height": 63.8 },
       { "id": "mouth_smile", "file": "klepa_parts/mouth_smile_1.png", "x": 117.6, "y": 192.8, "width": 103.8, "height": 70.1 },
-      { "id": "mouth_open", "file": "klepa_parts/mouth_open_1.png", "x": 108, "y": 200.5, "width": 129.7, "height": 62.8 }
+      { "id": "mouth_open", "file": "klepa_parts/mouth_open_1.png", "x": 108, "y": 200.5, "width": 129.7, "height": 62.8 },
+      { "id": "mouth_open2", "file": "klepa_parts/mouth_open_2.png", "x": 125.5, "y": 198.7, "width": 89.2, "height": 64.6 },
+      { "id": "mouth_wide", "file": "klepa_parts/mouth_smile_2.png", "x": 122.9, "y": 191.5, "width": 91.4, "height": 70.7 },
+      { "id": "mouth_small", "file": "klepa_parts/mouth_smile_3.png", "x": 121.5, "y": 190.1, "width": 92.3, "height": 72.6 },
+      { "id": "mouth_smirk", "file": "klepa_parts/mouth_smirk_1.png", "x": 120.8, "y": 192.1, "width": 109.3, "height": 69.6 },
+      { "id": "mouth_closed", "file": "klepa_parts/mouth_line_variant_2.png", "x": 122, "y": 200.6, "width": 104.4, "height": 44.6 },
+      { "id": "mouth_laugh", "file": "klepa_parts/mouth_open_laugh.png", "x": 119.5, "y": 196.4, "width": 104.3, "height": 65.2 }
     ],
     "hair_variants": [
       { "id": "hair_front", "file": "klepa_parts/hair_variant_6.png", "x": 50.1, "y": 12, "width": 239.9, "height": 199.5, "layer": "front" },
